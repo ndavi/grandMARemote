@@ -1,10 +1,9 @@
 package fr.octopus.grandmaremote.Activities;
 
 import android.content.Context;
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
+
+import fr.octopus.grandmaremote.helper.MainActivityCallBack;
+import fr.octopus.grandmaremote.helper.TypeMachine;
 
 /**
  * Created by nico on 11/6/17.
@@ -13,10 +12,12 @@ import android.widget.ImageView;
 public class SelectableImageView extends android.support.v7.widget.AppCompatImageView implements MainActivityCallBack {
     private MainActivityCallBack selectedCallBack;
     private TypeMachine typeMachine;
+    private int numMachine;
 
-    public SelectableImageView(Context context, TypeMachine typeMachine) {
+    public SelectableImageView(Context context, TypeMachine typeMachine, Integer numMachine) {
         super(context);
         this.typeMachine = typeMachine;
+        this.numMachine = numMachine;
         selectedCallBack = (MainActivityCallBack) context;
     }
 

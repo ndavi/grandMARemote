@@ -1,4 +1,6 @@
-package fr.octopus.grandmaremote.Activities;
+package fr.octopus.grandmaremote.helper;
+
+import fr.octopus.grandmaremote.Activities.SelectableImageView;
 
 /**
  * Created by nico on 11/6/17.

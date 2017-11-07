@@ -3,9 +3,7 @@ package fr.octopus.grandmaremote.Activities;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.os.Bundle;
-import android.support.constraint.solver.SolverVariable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -20,12 +18,16 @@ import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
 
 import fr.octopus.grandmaremote.R;
+import fr.octopus.grandmaremote.Service.ArtNetService;
+import fr.octopus.grandmaremote.helper.MainActivityCallBack;
+import fr.octopus.grandmaremote.helper.TypeMachine;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainActivityCallBack {
 
     private MovableActivity movable;
     private LayoutInflater layoutInflater;
     private RelativeLayout sceneLayout;
+    private ArtNetService artNetService;
 
     private ViewFlipper flipper;
     private SelectableImageView selectedImage;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        artNetService = new ArtNetService("artnet");
         setContentView(R.layout.activity_main);
         movable = new MovableActivity(this);
         layoutInflater = getLayoutInflater();
@@ -74,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.fab:
-                ImageView image = new SelectableImageView(this, TypeMachine.PARLED);
-                ImageView image2 = new SelectableImageView(this, TypeMachine.PARLED);
+                ImageView image = new SelectableImageView(this, TypeMachine.PARLED,1);
+                ImageView image2 = new SelectableImageView(this, TypeMachine.PARLED,2);
 
                 image.setImageBitmap(resizeBitmap(R.drawable.parled_test));
                 image2.setImageBitmap(resizeBitmap(R.drawable.parled2));
@@ -111,5 +114,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         this.selectedImage = selectableImageView;
         this.selectedImage.setColorFilter(Color.RED);
+
     }
 }

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">GrandmaRemote</string>
     <string name="action_settings">Settings</string>
+    <string name="chase_off">Chase off</string>
+    <string name="chase_on">Chase on</string>
+    <string name="strobe_off">Strobe off</string>
+    <string name="strobe_on">Strobe on</string>
+    <string name="dimmer">Dimmer</string>
 </resources>

@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MovableActivity"></activity>
-        <activity android:name=".Activities.ControlActivity" />
+        <service android:name=".Service.ArtNetService"></service>
     </application>
 
 </manifest>
