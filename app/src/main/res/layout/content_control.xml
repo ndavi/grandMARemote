@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/controlLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,11 +20,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+
+            <Button
+                android:id="@+id/settingsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Settings" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Machine selectionnée : "
+                android:id="@+id/machineSelectLabel"/>
+
             <ToggleButton
                 android:id="@+id/chase"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:textOff="@string/chase_off"
                 android:textOn="@string/chase_on"/>
@@ -51,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 />
+
         </LinearLayout>
     </ScrollView>
 

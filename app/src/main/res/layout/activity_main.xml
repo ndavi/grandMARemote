@@ -13,36 +13,18 @@
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:id="@+id/appBar"
             android:theme="@style/AppTheme.AppBarOverlay">
-
-            <Button
-                android:id="@+id/switcher"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_gravity="right"
-                android:background="@color/colorPrimary"
-                android:text="Button" />
-
-
-
         </android.support.design.widget.AppBarLayout>
 
-        <ViewFlipper
-            android:id="@+id/viewFlipper"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
         <include layout="@layout/content_main" android:visibility="visible"/>
-        <include layout="@layout/content_control"
-            android:id="@+id/include3" android:visibility="visible"/>
 
-        </ViewFlipper>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
+            android:layout_gravity="top|left"
             android:layout_margin="@dimen/fab_margin"
             app:srcCompat="@android:drawable/ic_input_add" />
 

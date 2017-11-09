@@ -1,4 +1,4 @@
-package fr.octopus.grandmaremote.Service;
+package fr.octopus.grandmaremote.artnet;
 
 /**
  * Created by nico on 11/7/17.
@@ -34,7 +34,11 @@ public class ArtNetClient {
         try
         {
             // sender
-            artnet.start(in);
+            if(in == null) {
+                artnet.start();
+            } else {
+                artnet.start(in);
+            }
             setReceiver(address);
         }
         catch (SocketException e) {
