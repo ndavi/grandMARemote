@@ -6,4 +6,5 @@
     <string name="strobe_off">Strobe off</string>
     <string name="strobe_on">Strobe on</string>
     <string name="dimmer">Dimmer</string>
+    <string name="couleur">Couleur</string>
 </resources>

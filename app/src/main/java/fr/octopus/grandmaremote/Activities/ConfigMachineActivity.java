@@ -1,11 +1,14 @@
 package fr.octopus.grandmaremote.Activities;
 
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
@@ -35,24 +38,37 @@ public class ConfigMachineActivity extends PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-
-        for (int i = 0; i < 10; i++){
-            ft.add(android.R.id.content, new MyPreferenceFragment());
-        }
-
+        ft.add(android.R.id.content, new MachinePreference());
         ft.commit();
     }
 
 
-public static class MyPreferenceFragment extends PreferenceFragment
+public static class MachinePreference extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
     {
+        SharedPreferences sharedPreferences;
+
         @Override
         public void onCreate(final Bundle savedInstanceState)
         {
+            //sharedPreferences = getPreferenceManager().getSharedPreferences();
+            //sharedPreferences.registerOnSharedPreferenceChangeListener(this);
             super.onCreate(savedInstanceState);
-            for (int i =0; i < MainActivity.nbrMachinesOnStage; i++) {
+            if(MainActivity.selectedImage != null) {
                 addPreferencesFromResource(R.xml.config_machine);
+                PreferenceCategory listPreferenceCategory = (PreferenceCategory) findPreference("default_machine");
+                listPreferenceCategory.setTitle("Machine numéro" + MainActivity.selectedImage.getNumMachine() + " : " + MainActivity.selectedImage.getTypeMachine());
+                EditTextPreference editTextDimmer = (EditTextPreference) findPreference("canal_dimmer");
+                EditTextPreference editTextCouleur = (EditTextPreference) findPreference("canal_couleur");
+                editTextDimmer.setKey("canal_dimmer_machine_" + MainActivity.selectedImage.getNumMachine());
+                editTextCouleur.setKey("canal_color_machine_" + MainActivity.selectedImage.getNumMachine());
             }
+            addPreferencesFromResource(R.xml.config_stage);
+
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+
         }
     }
 }

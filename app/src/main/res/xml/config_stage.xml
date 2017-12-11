@@ -2,19 +2,26 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent" android:layout_width="match_parent">
     <PreferenceCategory
-        android:title="default_machine"
-        android:key="default_machine">
+        android:title="Stage configuration"
+        android:key="stage_config">
         <EditTextPreference
-            android:key="canal_dimmer"
-            android:title="Canal du dimmer"
+            android:key="adresse_ip"
+            android:title="Adresse IP de la console"
+            android:dialogTitle="Adresse IP :"
+            android:defaultValue="192.168.1.1"
+            android:inputType="text">
+        </EditTextPreference>
+        <EditTextPreference
+            android:key="canal_chase"
+            android:title="Canal du chase"
             android:dialogTitle="Numéro du canal :"
             android:defaultValue="0"
             android:digits="0123456789"
             android:inputType="number">
         </EditTextPreference>
         <EditTextPreference
-            android:key="canal_couleur"
-            android:title="Canal de la couleur"
+            android:key="canal_strobe"
+            android:title="Canal du strobe"
             android:dialogTitle="Numéro du canal :"
             android:defaultValue="0"
             android:digits="0123456789"

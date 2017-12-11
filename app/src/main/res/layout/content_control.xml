@@ -35,7 +35,7 @@
                 android:id="@+id/machineSelectLabel"/>
 
             <ToggleButton
-                android:id="@+id/chase"
+                android:id="@+id/chaseToggle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -44,7 +44,7 @@
                 android:textOn="@string/chase_on"/>
 
             <ToggleButton
-                android:id="@+id/strobe"
+                android:id="@+id/strobeToggle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -52,7 +52,7 @@
                 android:textOn="@string/strobe_on" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/dimmerTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -61,7 +61,23 @@
                 android:text="@string/dimmer" />
 
             <SeekBar
-                android:id="@+id/seekBar"
+                android:id="@+id/seekBarDimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/colorTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="50dp"
+                android:textAlignment="center"
+                android:text="@string/couleur" />
+
+            <SeekBar
+                android:id="@+id/seekBarColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

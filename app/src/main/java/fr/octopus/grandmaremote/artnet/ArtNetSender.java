@@ -6,7 +6,7 @@ package fr.octopus.grandmaremote.artnet;
 
 public class ArtNetSender {
 
-    ArtNetClient artnet;
+    private ArtNetClient artnet;
     private int universe;
     private String address;
     public byte[] data = new byte[512];
@@ -22,6 +22,11 @@ public class ArtNetSender {
     {
             artnet = new ArtNetClient();
             artnet.open(null,address);
+    }
+
+    public void send(int canal, int value) {
+        data[canal] = (byte)value;
+        artnet.send(universe,data);
     }
 
 
