@@ -93,8 +93,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             for (int i = 0; i < nbrMachines; i++) {
                 SelectableImageView image = new SelectableImageView(this, TypeMachine.PARLED,i);
                 image.setImageBitmap(resizeBitmap(R.drawable.parled_test));
-                image.setX(prefs.getFloat("machine" + i + "X",0));
-                image.setY(prefs.getFloat("machine" + i + "Y",0));
+
+                int width = (prefs.getInt("machine" + i + "width",0));
+                int height = (prefs.getInt("machine" + i + "height",0));
+                int left = (prefs.getInt("machine" + i + "left",0));
+                int top = (prefs.getInt("machine" + i + "top",0));
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width,height);
+                params.leftMargin = left;
+                params.topMargin = top;
+                image.setLayoutParams(params);
                 movable.addView(image);
                 machinesOnStage.add(image);
             }
@@ -151,8 +158,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 SharedPreferences.Editor editor = prefs.edit();
                 for (SelectableImageView machine : machinesOnStage) {
                     editor = editor
-                            .putFloat("machine" + machine.getNumMachine() + "X", selectedImage.getX())
-                            .putFloat("machine" + machine.getNumMachine() + "Y", selectedImage.getY());
+                            .putInt("machine" + machine.getNumMachine() + "width", machine.getLayoutParams().width)
+                            .putInt("machine" + machine.getNumMachine() + "height", machine.getLayoutParams().height)
+                            .putInt("machine" + machine.getNumMachine() + "left", machine.getLeft())
+                            .putInt("machine" + machine.getNumMachine() + "top", machine.getTop());
                 }
                 editor
                         .putInt("nbrMachines", machinesOnStage.size())

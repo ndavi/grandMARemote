@@ -101,7 +101,7 @@ public class MovableActivity extends RelativeLayout implements View.OnTouchListe
             // Does the View exist?
             if(lView != null) {
                 // Remove the View from the Map.
-                this.getViewMap().remove(lPointerId); /** TODO: Provide a Callback? */
+                this.getViewMap().remove(lPointerId);
                 if(lView instanceof SelectableImageView) {
                     SelectableImageView image = (SelectableImageView) lView;
                     image.selectedItem(image);
