@@ -98,10 +98,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int height = (prefs.getInt("machine" + i + "height",0));
                 int left = (prefs.getInt("machine" + i + "left",0));
                 int top = (prefs.getInt("machine" + i + "top",0));
+                float scaleX = (prefs.getFloat("machine" + i + "scaleX",0));
+                float scaleY = (prefs.getFloat("machine" + i + "scaleY",0));
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width,height);
                 params.leftMargin = left;
                 params.topMargin = top;
                 image.setLayoutParams(params);
+                image.setScaleX(scaleX);
+                image.setScaleY(scaleY);
                 movable.addView(image);
                 machinesOnStage.add(image);
             }
@@ -161,7 +165,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             .putInt("machine" + machine.getNumMachine() + "width", machine.getLayoutParams().width)
                             .putInt("machine" + machine.getNumMachine() + "height", machine.getLayoutParams().height)
                             .putInt("machine" + machine.getNumMachine() + "left", machine.getLeft())
-                            .putInt("machine" + machine.getNumMachine() + "top", machine.getTop());
+                            .putInt("machine" + machine.getNumMachine() + "top", machine.getTop())
+                            .putFloat("machine" + machine.getNumMachine() + "scaleX", machine.getScaleX())
+                            .putFloat("machine" + machine.getNumMachine() + "scaleY", machine.getScaleY())
+                    ;
                 }
                 editor
                         .putInt("nbrMachines", machinesOnStage.size())
