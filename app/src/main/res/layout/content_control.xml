@@ -67,6 +67,12 @@
                 android:layout_weight="1"
                 />
 
+            <Button
+                android:id="@+id/dim_full"
+                android:layout_width="match_parent"
+                android:text="Send full"
+                android:layout_height="match_parent" />
+
             <TextView
                 android:id="@+id/colorTextView"
                 android:layout_width="match_parent"
@@ -82,6 +88,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 />
+
+            <Button
+                android:id="@+id/color_full"
+                android:layout_width="match_parent"
+                android:text="Send full"
+                android:layout_height="match_parent" />
+
+
+            <Button
+                android:id="@+id/change_position"
+                android:layout_width="match_parent"
+                android:text="Change position"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
     </ScrollView>

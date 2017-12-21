@@ -27,5 +27,13 @@
             android:digits="0123456789"
             android:inputType="number">
         </EditTextPreference>
+        <EditTextPreference
+            android:key="canal_position"
+            android:title="Canal changement position"
+            android:dialogTitle="Numéro du canal :"
+            android:defaultValue="0"
+            android:digits="0123456789"
+            android:inputType="number">
+        </EditTextPreference>
     </PreferenceCategory>
 </PreferenceScreen>

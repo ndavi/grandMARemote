@@ -18,10 +18,23 @@ public class ArtNetSender {
     }
 
 
-    void setup()
-    {
-            artnet = new ArtNetClient();
-            artnet.open(null,address);
+    void setup() {
+        artnet = new ArtNetClient();
+        artnet.open(null,address);
+
+        new Thread(new Runnable() {
+            public void run() {
+                while(true) {
+                    artnet.send(universe, data);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
     }
 
     public void send(int canal, int value) {

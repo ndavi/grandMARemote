@@ -73,6 +73,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         clearBtn.setOnClickListener(this);
         Button saveBtn = findViewById(R.id.btn_save);
         saveBtn.setOnClickListener(this);
+        Button fullDimmer = findViewById(R.id.dim_full);
+        fullDimmer.setOnClickListener(this);
+        Button fullColor = findViewById(R.id.color_full);
+        fullColor.setOnClickListener(this);
+        Button changePosition = findViewById(R.id.change_position);
+        changePosition.setOnClickListener(this);
 
         machineSelected = findViewById(R.id.machineSelectLabel);
         chaseBtn = findViewById(R.id.chaseToggle);
@@ -176,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.strobeToggle:
                 Integer canal_strobe = Integer.parseInt(prefs.getString("canal_strobe","0"));
-                if(strobeBtn.isActivated()) {
+                if(!strobeBtn.isChecked()) {
                     artNetService.send(canal_strobe, 0);
                 } else {
                     artNetService.send(canal_strobe, 255);
@@ -184,11 +190,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.chaseToggle:
                 Integer canal_chase = Integer.parseInt(prefs.getString("canal_chase","0"));
-                if(chaseBtn.isActivated()) {
+                if(!chaseBtn.isChecked()) {
                     artNetService.send(canal_chase, 0);
                 } else {
                     artNetService.send(canal_chase, 255);
                 }
+                break;
+            case R.id.dim_full:
+                int canal_dimmer = Integer.parseInt(prefs.getString("canal_dimmer_machine_" + selectedImage.getNumMachine(),"0"));
+                artNetService.send(canal_dimmer,255);
+                break;
+            case R.id.color_full:
+                int canal_color = Integer.parseInt(prefs.getString("canal_color_machine_" + selectedImage.getNumMachine(),"0"));
+                artNetService.send(canal_color, 255);
+                break;
+            case R.id.change_position:
+                new Thread(new Runnable() {
+                    int canal_position = Integer.parseInt(prefs.getString("canal_position","0"));
+                    public void run() {
+                            try {
+                                artNetService.send(canal_position,255);
+                                Thread.sleep(300);
+                                artNetService.send(canal_position,0);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                }).start();
+                //artNetService.send(canal_position,0);
+                break;
         }
     }
 
